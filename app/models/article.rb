@@ -71,6 +71,10 @@ class Article < Content
     end
   end
 
+  def merge_with(other)
+    self.body = self.body + other.body
+  end
+
   def set_permalink
     return if self.state == 'draft'
     self.permalink = self.title.to_permalink if self.permalink.nil? or self.permalink.empty?

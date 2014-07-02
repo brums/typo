@@ -37,6 +37,30 @@ class Admin::ContentController < Admin::BaseController
     new_or_edit
   end
 
+  def merge_with
+    id = params[:id]
+    merge_id = params[:merge_with]
+
+    article = Article.find(id)
+    merge_article = Article.find(merge_id) rescue nil
+
+    unless article.access_by? current_user
+      redirect_to :action => 'index'
+      flash[:error] = _("Error, you are not allowed to perform this action")
+      return
+    end
+
+    if merge_article.nil?
+      flash[:error] = _("Article with id \"#{merge_id}\" does not exist")
+    else
+      article.merge_with merge_article
+      article.save
+      flash[:notice] = _('Articles successfully merged')
+    end
+
+    redirect_to :action => 'index'
+  end
+
   def destroy
     @record = Article.find(params[:id])
 
