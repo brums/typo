@@ -45,7 +45,7 @@ class Admin::ContentController < Admin::BaseController
     merge_article = Article.find(merge_id) rescue nil
 
     unless article.access_by? current_user
-      redirect_to :action => 'index'
+      redirect_to :action => 'edit', :id => id
       flash[:error] = _("Error, you are not allowed to perform this action")
       return
     end
