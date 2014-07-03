@@ -1,8 +1,8 @@
 <%= form_tag( { :action => "merge_with", :id => @article.id },
-    :id => "article_form", :enctype => "multipart/form-data") do %>
+    :id => "merge_with_form", :enctype => "multipart/form-data") do %>
 
 <div class='editor-left'>
-  <h4><%= _("Merge Articles") %></h4>
+  <h4>Merge Articles</h4>
   <div class='class'>
     <%= label_tag 'merge_with', "Article id", :style => 'text-align: left; width: 80px' %>
     <%= text_field_tag 'merge_with' %>
