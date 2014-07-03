@@ -55,6 +55,8 @@ class Admin::ContentController < Admin::BaseController
     else
       article.merge_with merge_article
       article.save
+      merge_article.reload
+      merge_article.destroy
       flash[:notice] = _('Articles successfully merged')
     end
 
