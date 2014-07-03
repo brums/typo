@@ -58,7 +58,7 @@ class Admin::ContentController < Admin::BaseController
       flash[:notice] = _('Articles successfully merged')
     end
 
-    redirect_to :action => 'index'
+    redirect_to :action => 'edit', :id => id
   end
 
   def destroy

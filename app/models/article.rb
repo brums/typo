@@ -73,6 +73,7 @@ class Article < Content
 
   def merge_with(other)
     self.body = self.body + other.body
+    self.comments << other.comments
   end
 
   def set_permalink

@@ -2,17 +2,4 @@
 
 <%= render "admin/shared/edit", { :form_type => "article", :form_action => { :action => "new", :id => @article.id , :class => ('autosave')} } %>
 
-
-<%= form_tag( { :action => "merge_with", :id => @article.id },
-    :id => "article_form", :enctype => "multipart/form-data") do %>
-
-<div class='editor-left'>
-  <h4><%= _("Merge articles") %></h4>
-  <div class='class'>
-    <%= label_tag 'merge_with', "Article id", :style => 'text-align: left; width: 80px' %>
-    <%= text_field_tag 'merge_with' %>
-    <%= submit_tag "Merge" %>
-  </div>
-</div>
-
-<% end %>
+<%= render "merge_form" if @article.access_by? current_user %>
